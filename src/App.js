@@ -4,8 +4,8 @@ import { setData } from './store/actions';
 //import { searchFilterData } from '../store/selector';
 
 import Header from './components/header';
+import Stats from './components/stats';
 import deepPurple from '@material-ui/core/colors/deepPurple';
-import User from './components/user';
 import { createMuiTheme } from '@material-ui/core/styles';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
@@ -28,6 +28,7 @@ class App extends Component {
       <div className="App">
         <MuiThemeProvider theme={theme}>
           <Header />
+          <Stats />
         </MuiThemeProvider>
       </div>
     );

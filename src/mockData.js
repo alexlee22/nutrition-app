@@ -18,7 +18,7 @@
 //      "serving_size" : 1,
 //  That translates into:
 //      Two serves of Chicken Salad 0.5 cup, which is 1 cup. Rounding to integer is 224 grams and 508 calories.
- 
+
 export const MOCK_DATA = {
    first_name: 'Jane',
    last_name: 'Appleseed',
