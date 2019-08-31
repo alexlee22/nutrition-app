@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setData } from './store/actions';
 //import { searchFilterData } from '../store/selector';
-
+//Components
 import Header from './components/header';
 import Stats from './components/stats';
-import deepPurple from '@material-ui/core/colors/deepPurple';
+import Foods from './components/foods';
+//Material UI
 import { createMuiTheme } from '@material-ui/core/styles';
+import deepPurple from '@material-ui/core/colors/deepPurple';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
 const theme = createMuiTheme({
@@ -29,6 +31,7 @@ class App extends Component {
         <MuiThemeProvider theme={theme}>
           <Header />
           <Stats />
+          <Foods />
         </MuiThemeProvider>
       </div>
     );

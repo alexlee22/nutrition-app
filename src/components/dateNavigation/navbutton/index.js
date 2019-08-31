@@ -12,7 +12,6 @@ const styles = theme => ({
   },
 });
 
-
 function Navbutton(props) {
   const { classes, direction, index, noOfDays, eventOnClick } = props;
   if (direction === "back"){
@@ -34,10 +33,7 @@ function Navbutton(props) {
       />
     )
   }
-  
 }
-
-
 
 Navbutton.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -45,8 +41,6 @@ Navbutton.propTypes = {
   index: PropTypes.number.isRequired,
   noOfDays: PropTypes.number.isRequired,
   eventOnClick: PropTypes.func.isRequired
-
-
 };
 
 export default withStyles(styles)(Navbutton);

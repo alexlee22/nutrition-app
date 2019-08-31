@@ -32,11 +32,24 @@ class DateNavigation extends Component {
     //Dummy Data: calculate date
     let date = new Date()
     date.setDate(date.getDate() - dateIndex)
+    let dateFormat;
+    switch(dateIndex) {
+      case 0:
+        dateFormat = "Today";
+        break;
+      case 1:
+        dateFormat = "Yesterday";
+        break;
+      default:
+        //CHANGE TO dd MMM
+        dateFormat = date.toLocaleDateString("en-US");
+    }
+    
 
     return (
       <DivContainer>
         <Navbutton direction="back" index={dateIndex} noOfDays={metaData.data_points.length} eventOnClick={changeDate} />
-        <Typography variant="h4" component="h4">{ dateIndex === 0 ? "Today" : date.toLocaleDateString("en-US") }</Typography>
+        <Typography variant="h4" component="h4">{ dateFormat }</Typography>
         <Navbutton direction="forwards" index={dateIndex} noOfDays={metaData.data_points.length} eventOnClick={changeDate} />
       </DivContainer>
     )

@@ -17,6 +17,10 @@ const styles = theme => ({
   cells: {
     width: (100 / MEAL_CATEGORY.length).toString() + "%",
     textAlign: 'center',
+  },
+  mealCategory: {
+    textTransform: 'capitalize',
+    color: 'grey',
   }
 });
 
@@ -32,7 +36,7 @@ function Meals(props) {
       { MEAL_CATEGORY.map((cate, idx) => 
         <div key={idx} className={classes.cells}> 
           <Typography variant="h4" component="h4">{ calcTotal(foodList, cate).toFixed(0) }</Typography>
-          <Typography style={{ textTransform: 'capitalize' }} variant="subtitle1" component="p">{ cate }</Typography>
+          <Typography className={classes.mealCategory} variant="subtitle1">{ cate }</Typography>
         </div>
       )}
     </div>

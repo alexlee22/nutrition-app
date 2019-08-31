@@ -21,22 +21,21 @@ class Header extends Component {
   
     return (
       <>
-      <AppBar position='relative' style={{boxShadow:'none', display: 'flex', justifyContent: 'center',}} >
-        <div style={{display: 'flex', maxWidth: '400px', backgroundColor: 'white', borderRadius: '5px', padding: '10px', margin: '10px', alignItems: 'center' }}>
-          <div style={{ margin: '0 5px 0 0'}}>
-            <SearchIcon color="secondary" />
+        <AppBar position='relative' style={{boxShadow:'none', display: 'flex', justifyContent: 'center',}} >
+          <div style={{display: 'flex', maxWidth: '400px', backgroundColor: 'white', borderRadius: '5px', padding: '10px', margin: '10px', alignItems: 'center' }}>
+            <div style={{ margin: '0 5px 0 0'}}>
+              <SearchIcon color="secondary" />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+              style={{ 'flexGrow': 1 }}
+            />
           </div>
-          <InputBase
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-            style={{ 'flexGrow': 1 }}
-          />
-        </div>
-        <Hidden mdUp>
-          <User />
-        </Hidden>
-      </AppBar>
-      
+          <Hidden mdUp>
+            <User />
+          </Hidden>
+        </AppBar>
       </>
     )
   }
