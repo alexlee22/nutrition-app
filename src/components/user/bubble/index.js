@@ -16,7 +16,7 @@ const styles = theme => ({
     width: '75px',
     height: '75px',
     backgroundColor: deepPurple[700],
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('sd')]: {
       backgroundColor: grey[600],
     }
   },

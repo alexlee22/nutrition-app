@@ -8,6 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Hidden from '@material-ui/core/Hidden';
 
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +32,7 @@ class Header extends Component {
             style={{ 'flexGrow': 1 }}
           />
         </div>
-        <Hidden smUp>
+        <Hidden mdUp>
           <User />
         </Hidden>
       </AppBar>

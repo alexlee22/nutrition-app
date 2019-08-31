@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import DateNavigation from '../dateNavigation';
 import Summary from './summary';
 import LoadingBar from './loadingbar';
 import Meals from './meals';
 //Material-ui
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Hidden from '@material-ui/core/Hidden';
 
 class Stats extends Component {
   constructor(props) {
@@ -22,6 +24,9 @@ class Stats extends Component {
     console.log(totalCals)
     return (
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', margin: '20px' }}>
+        <Hidden mdUp>
+          <DateNavigation />
+        </Hidden>
         <Summary sum={totalCals} goal={metaData.daily_goal} />
         <LoadingBar progress={(totalCals/metaData.daily_goal)*100} />
         <Meals foodList={metaData.data_points[dateIndex].intake_list} />
