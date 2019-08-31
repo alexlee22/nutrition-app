@@ -50,7 +50,7 @@ function Navbutton(props) {
   
   return(
     <ListItem className={classes.container}>
-      <img className={classes.icon} src={data.thumb} />
+      <img alt={"Image of " + data.food_name} className={classes.icon} src={data.thumb} />
       <div className={classes.textContainer}>
         <ListItemText className={classes.listItemText} disableTypography
           primary={<Typography className={classes.textCapitalize} type="body1">{data.food_name}</Typography>}

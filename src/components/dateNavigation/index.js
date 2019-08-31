@@ -5,7 +5,6 @@ import styled from 'styled-components'
 // Components
 import Navbutton from './navbutton';
 // Material-ui
-import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 const DivContainer = styled.div`
@@ -27,7 +26,7 @@ class DateNavigation extends Component {
   };
 
   render() {
-    const { classes, metaData, dateIndex, changeDate } = this.props;
+    const { metaData, dateIndex, changeDate } = this.props;
     
     //Dummy Data: calculate date
     let date = new Date()

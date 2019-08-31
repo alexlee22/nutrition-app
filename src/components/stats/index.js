@@ -5,8 +5,6 @@ import Summary from './summary';
 import LoadingBar from './loadingbar';
 import Meals from './meals';
 //Material-ui
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Hidden from '@material-ui/core/Hidden';
 
 class Stats extends Component {

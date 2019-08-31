@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+//import quickSearchFoods from '../../store/actions';
 import User from '../user';
-//Material-ui
-import { makeStyles } from '@material-ui/core/styles';
+//Components
+import Searchbar from './searchbar';
+import Searchresults from './searchresults';
+//Material-UI
 import AppBar from '@material-ui/core/AppBar';
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
 import Hidden from '@material-ui/core/Hidden';
 
 
@@ -18,28 +19,19 @@ class Header extends Component {
   };
 
   render() {
-  
+    const { quickSearchData } = this.props;
     return (
       <>
-        <AppBar position='relative' style={{boxShadow:'none', display: 'flex', justifyContent: 'center',}} >
-          <div style={{display: 'flex', maxWidth: '400px', backgroundColor: 'white', borderRadius: '5px', padding: '10px', margin: '10px', alignItems: 'center' }}>
-            <div style={{ margin: '0 5px 0 0'}}>
-              <SearchIcon color="secondary" />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-              style={{ 'flexGrow': 1 }}
-            />
-          </div>
-          <Hidden mdUp>
-            <User />
-          </Hidden>
-        </AppBar>
+      <AppBar position='relative' style={{boxShadow:'none', display: 'flex', justifyContent: 'center', zIndex: 10}} >
+        <Searchbar  />
+        <Hidden mdUp>
+          <User />
+        </Hidden>
+      </AppBar>
+      <Searchresults searchAction={quickSearchData} data={quickSearchData} />
       </>
     )
   }
-
 }
 
 
@@ -47,6 +39,7 @@ class Header extends Component {
 
 const mapStateToProps = state => ({
     //...state
+    quickSearchData: state.quickSearchData,
 })
 
 const mapDispatchToProps = dispatch => ({
