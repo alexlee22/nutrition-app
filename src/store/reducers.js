@@ -8,7 +8,8 @@ const initialQuickSearch = {
 const initialState = {
   metaData: MOCK_DATA,
   dateIndex: 1,
-  quickSearchData: initialQuickSearch
+  quickSearchData: initialQuickSearch,
+  inspectFood: {}
 }
 
 export default (state = initialState, action) => {
@@ -18,8 +19,11 @@ export default (state = initialState, action) => {
     case 'CHANGE_DATE':
       return { ...state, dateIndex: action.payload };
     case 'SET_QUICK_SEARCH_DATA':
-        return { ...state, quickSearchData: action.payload };
+      return { ...state, quickSearchData: action.payload };
+    case 'SET_INSPECT_FOOD':
+      console.log('action',action.payload)
+      return { ...state, inspectFood: action.payload };
     default:
-      return state
+      return state;
   }
 }

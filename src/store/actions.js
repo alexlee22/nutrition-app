@@ -16,7 +16,7 @@ export const changeDate = (payload) => dispatch => {
 }
 
 export const quickSearchFoods = (payload) => dispatch => {
-  console.log(payload)
+  // When empty, set no search items
   if (payload === ''){
     console.log('none')
     dispatch({
@@ -25,7 +25,7 @@ export const quickSearchFoods = (payload) => dispatch => {
     });
   }
   else {
-    let configBody = { "query": "cheese" };
+    let configBody = { "query": payload };
     let configHeaders = {
       'x-app-id': nutritionAppID,
       'x-app-key': nutritionAppKey,
@@ -46,8 +46,11 @@ export const quickSearchFoods = (payload) => dispatch => {
       });
     });
   }
-  
-
 }
 
-
+export const setInspectFood = (payload) => dispatch => {
+  dispatch({
+    type: 'SET_INSPECT_FOOD',
+    payload: payload
+  })
+}

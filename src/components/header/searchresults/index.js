@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+//Components
+import Searchresultitem from './searchresultitem';
 //Material-UI
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -19,14 +21,22 @@ const styles = theme => ({
     overflow: 'scroll',
   },
   root: {
-    width: '100%',
     margin: '10px',
   },
+  listSection: {
+  },
+  ul: {
+    padding: 0,
+    backgroundColor: '#FFFFFF',
+  },
+  headings: {
+    textTransform: 'uppercase',
+  }
 });
 
 function Searchresults(props) {
   const { classes, data, searchAction } = props;
-  
+  console.log(searchAction)
   let visible = false;
   if (data.common.length > 0 || data.branded.length > 0){
     visible = true;
@@ -35,7 +45,27 @@ function Searchresults(props) {
   return(
     <Paper className={classes.container} style={visible ? {} : { display: 'none' } }>
       <List className={classes.root} subheader={<li />}>
-        {[0, 1, 2, 3, 4].map(sectionId => (
+        {['common', 'branded'].map(key => (
+          <li key={`section-${key}`} className={classes.listSection}>
+            <ul className={classes.ul}>
+              <ListSubheader className={classes.headings}>{key}</ListSubheader>
+              { data[key].filter((d, idx) => idx < 5).map((food, idx) => 
+                <Searchresultitem key={idx} data={food} selectFunction={searchAction} />
+              )}
+            </ul>
+          </li>
+        ))}
+      </List>
+    </Paper>
+    
+  )
+}
+
+
+
+/*
+<List className={classes.root} subheader={<li />}>
+        {[0, 1].map(sectionId => (
           <li key={`section-${sectionId}`} className={classes.listSection}>
             <ul className={classes.ul}>
               <ListSubheader>{`I'm sticky ${sectionId}`}</ListSubheader>
@@ -48,10 +78,10 @@ function Searchresults(props) {
           </li>
         ))}
       </List>
-    </Paper>
-    
-  )
-}
+
+*/
+
+
 
 Searchresults.propTypes = {
   classes: PropTypes.object.isRequired,

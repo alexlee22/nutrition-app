@@ -7,6 +7,7 @@ import { quickSearchFoods } from '../../../store/actions';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 
+const timeoutDuration = 400;
 
 class Searchbar extends Component {
   constructor(props) {
@@ -16,7 +17,6 @@ class Searchbar extends Component {
       typing: false,
       typingTimeout: 0
     };
-    //this.handleSerchChange
   };
 
   handleSearchChange = (e) => {
@@ -28,9 +28,8 @@ class Searchbar extends Component {
        searchValue: e.target.value,
        typing: false,
        typingTimeout: setTimeout(function () {
-           console.log('poop', self.state.searchValue);
            self.props.quickSearchFoods(self.state.searchValue);
-         }, 2000)
+         }, timeoutDuration)
     });
   }
 
