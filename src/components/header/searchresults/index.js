@@ -35,8 +35,8 @@ const styles = theme => ({
 });
 
 function Searchresults(props) {
-  const { classes, data, searchAction } = props;
-  console.log(searchAction)
+  const { classes, data, setInspectFood } = props;
+  
   let visible = false;
   if (data.common.length > 0 || data.branded.length > 0){
     visible = true;
@@ -50,7 +50,7 @@ function Searchresults(props) {
             <ul className={classes.ul}>
               <ListSubheader className={classes.headings}>{key}</ListSubheader>
               { data[key].filter((d, idx) => idx < 5).map((food, idx) => 
-                <Searchresultitem key={idx} data={food} selectFunction={searchAction} />
+                <Searchresultitem key={idx} data={food} setInspectFood={setInspectFood} />
               )}
             </ul>
           </li>
@@ -86,7 +86,7 @@ function Searchresults(props) {
 Searchresults.propTypes = {
   classes: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
-  searchAction: PropTypes.func.isRequired
+  setInspectFood: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Searchresults);

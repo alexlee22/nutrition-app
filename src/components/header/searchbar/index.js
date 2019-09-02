@@ -34,14 +34,15 @@ class Searchbar extends Component {
   }
 
   render() {
-    //const { classes } = props;
+    const { dateIndex } = this.props;
     return(
       <div style={{display: 'flex', zIndex: 10, maxWidth: '400px', backgroundColor: 'white', borderRadius: '5px', padding: '10px', margin: '10px', alignItems: 'center' }}>
         <div style={{ margin: '0 5px 0 0'}}>
-          <SearchIcon color="secondary" />
+          <SearchIcon color="secondary"  />
         </div>
         <InputBase
-          placeholder="Search…"
+          disabled={dateIndex == 0 ? false : true}
+          placeholder="Search foods…"
           inputProps={{ 'aria-label': 'search' }}
           style={{ 'flexGrow': 1 }}
           onChange={(e)=> this.handleSearchChange(e)}
@@ -53,7 +54,7 @@ class Searchbar extends Component {
 
 
 const mapStateToProps = state => ({
-  //...state
+  dateIndex: state.dateIndex
 })
 
 const mapDispatchToProps = dispatch => ({

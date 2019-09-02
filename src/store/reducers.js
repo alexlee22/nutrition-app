@@ -7,7 +7,7 @@ const initialQuickSearch = {
 
 const initialState = {
   metaData: MOCK_DATA,
-  dateIndex: 1,
+  dateIndex: 0,
   quickSearchData: initialQuickSearch,
   inspectFood: {}
 }
@@ -21,8 +21,20 @@ export default (state = initialState, action) => {
     case 'SET_QUICK_SEARCH_DATA':
       return { ...state, quickSearchData: action.payload };
     case 'SET_INSPECT_FOOD':
-      console.log('action',action.payload)
       return { ...state, inspectFood: action.payload };
+    case 'ADD_FOOD':
+      return { 
+        ...state,
+        metaData: {
+          ...state.metaData,
+          data_points: state.metaData.data_points.map((d, idx) => {
+            if (idx === 0){
+              d.intake_list.push(action.payload)
+            }
+            return d;
+          })
+        }
+      }
     default:
       return state;
   }

@@ -6,7 +6,7 @@ import { setInspectFood } from '../../store/actions';
 import User from '../user';
 import Searchbar from './searchbar';
 import Searchresults from './searchresults';
-import Inspectfood from './inspectfood';
+import InspectFood from './InspectFood';
 //Material-UI
 import AppBar from '@material-ui/core/AppBar';
 import Hidden from '@material-ui/core/Hidden';
@@ -25,7 +25,11 @@ class Header extends Component {
   }
 
   render() {
-    const { quickSearchData, setInspectFood } = this.props;
+    const { inspectFood, quickSearchData, setInspectFood } = this.props;
+
+    //Check if need to show InspectFoods
+    let mountInspectFood = Object.keys(inspectFood).length <= 0 ? false : true;
+
     return (
       <>
         <AppBar position='relative' style={{boxShadow:'none', display: 'flex', justifyContent: 'center', zIndex: 10}} >
@@ -34,8 +38,10 @@ class Header extends Component {
             <User />
           </Hidden>
         </AppBar>
-        <Searchresults data={quickSearchData} searchAction={setInspectFood}  />
-        <Inspectfood />
+        <Searchresults data={quickSearchData} setInspectFood={setInspectFood}  />
+        { mountInspectFood &&
+          <InspectFood />
+        }
       </>
     )
   }
@@ -45,8 +51,8 @@ class Header extends Component {
 
 
 const mapStateToProps = state => ({
-    //...state
-    quickSearchData: state.quickSearchData,
+  inspectFood: state.inspectFood,
+  quickSearchData: state.quickSearchData,
 })
 
 const mapDispatchToProps = dispatch => ({

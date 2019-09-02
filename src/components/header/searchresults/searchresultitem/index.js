@@ -37,10 +37,9 @@ const styles = theme => ({
 });
 
 function Searchresultitem(props) {
-  const { classes, data, selectFunction } = props;
-  console.log(selectFunction)
+  const { classes, data, setInspectFood } = props;
   return(
-    <ListItem className={classes.container} onClick={(data) => selectFunction(data)}>
+    <ListItem className={classes.container} onClick={() => setInspectFood(data)}>
       <img alt={"Image of " + data.food_name} className={classes.icon} src={data.photo.thumb} />
       <ListItemText
         className={classes.listItemText}
@@ -51,31 +50,13 @@ function Searchresultitem(props) {
   );
 }
 
-/*
-<img alt={"Image of " + data.food_name} className={classes.icon} src={data.thumb} />
-      <div className={classes.textContainer}>
-        <ListItemText className={classes.listItemText} disableTypography
-          primary={<Typography className={classes.textCapitalize} type="body1">{data.food_name}</Typography>}
-          secondary={<Typography type="body2" style={{ color: 'grey' }}>{servings}</Typography>}
-        />
-        <ListItemText className={classes.listItemText} disableTypography
-          primary={<Typography type="body1">{calories.toFixed(0) + " cal" }</Typography>}
-          secondary={<Typography className={classes.textCapitalize} type="body2" style={{ color: 'grey' }}>{data.meal_type}</Typography>}
-        />
-      </div>
-
-      <ListItem key={`item-${sectionId}-${item}`}>
-                  <ListItemText primary={`Item ${item}`} />
-                </ListItem>
-*/
-
 
 
 
 Searchresultitem.propTypes = {
   classes: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
-  selectFunction: PropTypes.func.isRequired,
+  setInspectFood: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(Searchresultitem);
