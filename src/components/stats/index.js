@@ -10,23 +10,22 @@ import Meals from './meals';
 //Material-ui
 import Hidden from '@material-ui/core/Hidden';
 
+
+//LOOSES ON PROPS MANAGEMENT
 const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
   
-  
   margin: 20px;
   @media(min-width: 960px){
     max-width: 350px;
+    width: 100%;
   }
 `;
 
 class Stats extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      //
-    };
   };
 
   render() {
@@ -38,12 +37,12 @@ class Stats extends Component {
           <DateNavigation />
         </Hidden>
         <Hidden smDown>
-            <User />
+          <User />
         </Hidden>
         <Summary sum={totalCals} goal={metaData.daily_goal} />
         <LoadingBar progress={(totalCals/metaData.daily_goal)*100} />
         <Meals foodList={metaData.data_points[dateIndex].intake_list} />
-        </DivContainer>
+      </DivContainer>
     )
   }
 }

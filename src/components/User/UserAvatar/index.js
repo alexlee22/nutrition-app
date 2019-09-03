@@ -9,8 +9,9 @@ const styles = theme => ({
     width: '75px',
     height: '75px',
     [theme.breakpoints.up('sm')]: {
-      width: '100px',
-      height: '100px',
+      width: '125px',
+      height: '125px',
+      order: 2,
     }
   },
 });

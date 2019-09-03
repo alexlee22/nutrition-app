@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 import grey from '@material-ui/core/colors/grey';
 import Typography from '@material-ui/core/Typography';
+import { isUserWhitespacable } from '@babel/types';
 
 const styles = theme => ({
   bubble: {
@@ -16,34 +17,34 @@ const styles = theme => ({
     width: '75px',
     height: '75px',
     backgroundColor: deepPurple[700],
-    [theme.breakpoints.up('sd')]: {
+    [theme.breakpoints.up('md')]: {
       backgroundColor: grey[600],
+      order: 1,
+    },
+    "&:last-child": {
+      order: 3,
     }
   },
-  measurement: {
-
-  },
-  numeracy: {
-    
+  typography: {
+    color: 'white',
   }
 });
 
-function Bubble(props) {
+function UserBubble(props) {
   const { classes, label, value } = props;
-  console.log(props);
   return(
     <div className={classes.bubble}>
-      <Typography variant="h5" component="h5">{value}</Typography>
-      <Typography variant="h6" component="h6">{label}</Typography>
+      <Typography className={classes.typography} variant="h5" component="h5">{value}</Typography>
+      <Typography className={classes.typography} variant="h6" component="h6">{label}</Typography>
     </div>
   )
 }
 
-Bubble.propTypes = {
+UserBubble.propTypes = {
   classes: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired
 };
 
-export default withStyles(styles)(Bubble);
+export default withStyles(styles)(UserBubble);
 
