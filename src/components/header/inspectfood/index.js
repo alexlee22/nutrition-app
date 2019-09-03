@@ -5,6 +5,7 @@ import { setInspectFood, appendFood } from '../../../store/actions';
 //Components
 import InspectFoodOverview from './InspectFoodOverview';
 import InspectFoodServings from './InspectFoodServings';
+import InspectFoodMeal from './InspectFoodMeal';
 //Material-UI
 import Hidden from '@material-ui/core/Hidden';
 import Paper from '@material-ui/core/Paper';
@@ -12,9 +13,6 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 
-
-import FormControl from '@material-ui/core/FormControl';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputBase from '@material-ui/core/InputBase';
 import { flexbox } from '@material-ui/system';
@@ -34,10 +32,19 @@ const DivContainer = styled.div`
 
 const StyledPaper = styled(Paper)`
   width: calc(100% - 20px);
+  max-width: 350px;
+  margin: 10px;
+  padding: 20px;
 `;
 
 const StyledDivider = styled(Divider)`
   margin: 5px 10px;
+`
+
+const StyledButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: '10px;
 `
 
 class InspectFood extends Component {
@@ -60,11 +67,12 @@ class InspectFood extends Component {
   handleAddFood = () => {
     const { inspectFood, appendFood  } = this.props;
     const { servings, meal } = this.state;
+    
     appendFood(inspectFood, servings, meal);
   } 
 
   render() {
-    const { inspectFood, setInspectFood, appendFood } = this.props;
+    const { inspectFood, setInspectFood } = this.props;
     
     //Check visibility
     let visible = true;
@@ -79,35 +87,18 @@ class InspectFood extends Component {
             data={inspectFood}
             setInspectFood={setInspectFood}
           />
-          
           <StyledDivider />
-          
           <InspectFoodServings
             data={inspectFood}
             servings={this.state.servings}
             setServings={this.handleChangeServings}
           />
-
           <StyledDivider />
-
-          <div style={{padding: '10px'}}>
-            <Typography varient="overline" style={{fontWeight: '400', color: 'grey'}}>ADD TO TODAY</Typography>
-            <FormControl style={{width: '100%'}}>
-              <NativeSelect
-                style={{width: '100%', padding: '10px', backgroundColor: 'rgba(0, 0, 0, 0.09)', borderRadius: '5px'}}
-                value={this.state.meal}
-                onChange={(e) => this.handleSelectMeal(e)}
-              >
-                <option value="">Meal...</option>
-                <option value={'breakfast'}>Breakfast</option>
-                <option value={'lunch'}>Lunch</option>
-                <option value={'dinner'}>Dinner</option>
-                <option value={'snack'}>Snack</option>
-              </NativeSelect>
-            </FormControl>
-          </div>
-
-          <div style={{display: 'flex', justifyContent: 'flex-end', padding: '10px'}}>
+          <InspectFoodMeal
+            meal={this.state.meal}
+            setMeal={this.handleSelectMeal}
+          />
+          <StyledButtonContainer>
             <Button
               variant="contained"
               color="primary"
@@ -115,7 +106,7 @@ class InspectFood extends Component {
             >
               ADD
             </Button>
-          </div>
+          </StyledButtonContainer>
           
         </StyledPaper>
         

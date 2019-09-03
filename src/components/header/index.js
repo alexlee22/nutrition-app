@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { setInspectFood } from '../../store/actions';
 
 //Components
-import User from '../user';
+import DateNavigation from '../dateNavigation';
+import User from '../User';
 import Searchbar from './searchbar';
 import Searchresults from './searchresults';
 import InspectFood from './InspectFood';
+
 //Material-UI
 import AppBar from '@material-ui/core/AppBar';
 import Hidden from '@material-ui/core/Hidden';
@@ -32,16 +34,22 @@ class Header extends Component {
 
     return (
       <>
-        <AppBar position='relative' style={{boxShadow:'none', display: 'flex', justifyContent: 'center', zIndex: 10}} >
+        <AppBar position='relative' style={{boxShadow:'none', display: 'flex', justifyContent: 'center', alignItems: 'center', padding:'10px', zIndex: 10}} >
           <Searchbar  />
           <Hidden mdUp>
             <User />
           </Hidden>
-        </AppBar>
+          <Hidden smDown>
+            <DateNavigation />
+          </Hidden>
+        
         <Searchresults data={quickSearchData} setInspectFood={setInspectFood}  />
+        
+        
         { mountInspectFood &&
           <InspectFood />
         }
+        </AppBar>
       </>
     )
   }

@@ -1,5 +1,4 @@
-const nutritionAppID = "";
-const nutritionAppKey = "";
+
 const nutritionInstantURL = "https://trackapi.nutritionix.com/v2/search/instant";
 const nutritionDetailGeneric = "https://trackapi.nutritionix.com/v2/natural/nutrients";
 const nutritionDetailBranded = "https://trackapi.nutritionix.com/v2/search/item";

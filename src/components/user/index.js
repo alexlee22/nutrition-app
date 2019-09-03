@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+//Components
 import Avatar from './avatar';
 import Bubble from './bubble';
 //Material-ui
@@ -19,7 +21,7 @@ class User extends Component {
     const { metaData } = this.props;
     console.log(metaData)
     return (
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', margin: '10px' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', margin: '10px' }}>
         <Avatar />
         <Typography style={{ flexGrow: 1 }} variant="h5" component="h5">
           { metaData.first_name }

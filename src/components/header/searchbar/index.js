@@ -36,9 +36,9 @@ class Searchbar extends Component {
   render() {
     const { dateIndex } = this.props;
     return(
-      <div style={{display: 'flex', zIndex: 10, maxWidth: '400px', backgroundColor: 'white', borderRadius: '5px', padding: '10px', margin: '10px', alignItems: 'center' }}>
+      <div style={{display: 'flex', width: '100%', maxWidth: '450px', backgroundColor: 'white', borderRadius: '5px', alignItems: 'center' }}>
         <div style={{ margin: '0 5px 0 0'}}>
-          <SearchIcon color="secondary"  />
+          <SearchIcon color="secondary" style={{margin: '10px'}}  />
         </div>
         <InputBase
           disabled={dateIndex == 0 ? false : true}

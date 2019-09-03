@@ -12,16 +12,18 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 
 const styles = theme => ({
   container: {
+    width:'100vw',
+    height: '100vh',
     position: 'absolute',
     top: '70px',
-    width: 'calc(100% - 20px)',
-    maxHeight: 'calc(100% - 70px - 10px)',
-    margin: '0 10px',
-    zIndex: 12,
-    overflow: 'scroll',
+    backgroundColor: 'rgba(0,0,0,0.25)',
   },
-  root: {
-    margin: '10px',
+  paper: {
+    width: 'calc(100% - 20px)',
+    maxWidth: '450px',
+    maxHeight: 'calc(100% - 70px - 10px)',
+    margin: '0 auto',
+    overflow: 'scroll',
   },
   listSection: {
   },
@@ -43,20 +45,22 @@ function Searchresults(props) {
   }
 
   return(
-    <Paper className={classes.container} style={visible ? {} : { display: 'none' } }>
-      <List className={classes.root} subheader={<li />}>
-        {['common', 'branded'].map(key => (
-          <li key={`section-${key}`} className={classes.listSection}>
-            <ul className={classes.ul}>
-              <ListSubheader className={classes.headings}>{key}</ListSubheader>
-              { data[key].filter((d, idx) => idx < 5).map((food, idx) => 
-                <Searchresultitem key={idx} data={food} setInspectFood={setInspectFood} />
-              )}
-            </ul>
-          </li>
-        ))}
-      </List>
-    </Paper>
+    <div className={classes.container} style={visible ? {} : { display: 'none' }} >
+      <Paper className={classes.paper} >
+        <List className={classes.root} subheader={<li />}>
+          {['common', 'branded'].map(key => (
+            <li key={`section-${key}`} className={classes.listSection}>
+              <ul className={classes.ul}>
+                <ListSubheader className={classes.headings}>{key}</ListSubheader>
+                { data[key].filter((d, idx) => idx < 5).map((food, idx) => 
+                  <Searchresultitem key={idx} data={food} setInspectFood={setInspectFood} />
+                )}
+              </ul>
+            </li>
+          ))}
+        </List>
+      </Paper>
+    </div>
     
   )
 }

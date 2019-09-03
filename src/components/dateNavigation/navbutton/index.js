@@ -9,10 +9,16 @@ const styles = theme => ({
   icon: {
     width: '20px',
     height: '20px',
+    color: theme.palette.primary.main,
+    [theme.breakpoints.up('md')]: {
+      color: 'white',
+    },
   },
 });
 
-function Navbutton(props) {
+
+
+function NavButton(props) {
   const { classes, direction, index, noOfDays, eventOnClick } = props;
   if (direction === "back"){
     return(
@@ -35,7 +41,7 @@ function Navbutton(props) {
   }
 }
 
-Navbutton.propTypes = {
+NavButton.propTypes = {
   classes: PropTypes.object.isRequired,
   direction: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
@@ -43,7 +49,7 @@ Navbutton.propTypes = {
   eventOnClick: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(Navbutton);
+export default withStyles(styles)(NavButton);
 
 
 

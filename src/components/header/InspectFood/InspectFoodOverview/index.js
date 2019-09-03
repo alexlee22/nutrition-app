@@ -8,6 +8,9 @@ import CloseIcon from '@material-ui/icons/Close';
 
 const styles = theme => ({
   container: {
+    padding: '10px 0',
+  },
+  imageWrapper: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'top' 
@@ -22,8 +25,8 @@ const styles = theme => ({
 function InspectFoodOverview(props) {
   const { classes, data, setInspectFood } = props;
   return(
-    <div style={{padding: '10px'}}>
-      <div className={classes.container}>
+    <div className={classes.container}>
+      <div className={classes.imageWrapper}>
         <img className={classes.thumbnailIcon} src={data.photo.thumb} />
         <CloseIcon color="primary" onClick={() => setInspectFood({})} />
       </div>

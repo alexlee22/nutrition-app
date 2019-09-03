@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+//Components
+import User from '../User';
 import DateNavigation from '../dateNavigation';
 import Summary from './summary';
 import LoadingBar from './loadingbar';
 import Meals from './meals';
 //Material-ui
 import Hidden from '@material-ui/core/Hidden';
+
+const DivContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  
+  margin: 20px;
+  @media(min-width: 960px){
+    max-width: 350px;
+  }
+`;
 
 class Stats extends Component {
   constructor(props) {
@@ -17,25 +31,22 @@ class Stats extends Component {
 
   render() {
     const { metaData, dateIndex } = this.props;
-    console.log(metaData)
     let totalCals = metaData.data_points[dateIndex].intake_list.reduce((total, d) => total + (d.serving_size / d.serving_qty) * d.nf_calories, 0);
-    console.log(totalCals)
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', margin: '20px' }}>
+      <DivContainer>
         <Hidden mdUp>
           <DateNavigation />
+        </Hidden>
+        <Hidden smDown>
+            <User />
         </Hidden>
         <Summary sum={totalCals} goal={metaData.daily_goal} />
         <LoadingBar progress={(totalCals/metaData.daily_goal)*100} />
         <Meals foodList={metaData.data_points[dateIndex].intake_list} />
-      </div>
+        </DivContainer>
     )
   }
 }
-
-
-
-
 
 const mapStateToProps = state => ({
     metaData: state.metaData,

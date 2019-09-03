@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { changeDate } from '../../store/actions';
 import styled from 'styled-components'
 // Components
-import Navbutton from './navbutton';
+import NavButton from './NavButton';
 // Material-ui
 import Typography from '@material-ui/core/Typography';
 
@@ -15,6 +15,10 @@ const DivContainer = styled.div`
   flex-wrap: noWrap;
   justify-content: space-between;
   align-items: center;
+  @media(min-width: 960px){
+    max-width: 450px;
+  }
+  
 `
 
 class DateNavigation extends Component {
@@ -47,9 +51,9 @@ class DateNavigation extends Component {
 
     return (
       <DivContainer>
-        <Navbutton direction="back" index={dateIndex} noOfDays={metaData.data_points.length} eventOnClick={changeDate} />
+        <NavButton direction="back" index={dateIndex} noOfDays={metaData.data_points.length} eventOnClick={changeDate} />
         <Typography variant="h4" component="h4">{ dateFormat }</Typography>
-        <Navbutton direction="forwards" index={dateIndex} noOfDays={metaData.data_points.length} eventOnClick={changeDate} />
+        <NavButton direction="forwards" index={dateIndex} noOfDays={metaData.data_points.length} eventOnClick={changeDate} />
       </DivContainer>
     )
   }

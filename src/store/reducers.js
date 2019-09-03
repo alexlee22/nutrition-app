@@ -25,6 +25,7 @@ export default (state = initialState, action) => {
     case 'ADD_FOOD':
       return { 
         ...state,
+        inspectFood: {},
         metaData: {
           ...state.metaData,
           data_points: state.metaData.data_points.map((d, idx) => {

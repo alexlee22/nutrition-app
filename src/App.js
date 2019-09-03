@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setData } from './store/actions';
+import styled from 'styled-components'; 
 //import { searchFilterData } from '../store/selector';
 //Components
 import Header from './components/header';
-import Stats from './components/stats';
-import Foods from './components/foods';
+//import Stats from './components/stats';
+//import Foods from './components/foods';
+import Body from './components/Body';
 //Material UI
 import { createMuiTheme } from '@material-ui/core/styles';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { flexbox } from '@material-ui/system';
+
+
+
+const WrapperDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media(min-width: 960px){
+    flex-direction: row;
+    flex-wrap: noWrap;
+  }
+`;
 
 const theme = createMuiTheme({
   palette: {
@@ -30,8 +44,7 @@ class App extends Component {
       <div className="App">
         <MuiThemeProvider theme={theme}>
           <Header />
-          <Stats />
-          <Foods />
+          <Body />
         </MuiThemeProvider>
       </div>
     );
@@ -42,12 +55,12 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   //searchList: state.searchList,
-  metaData: state.metaData
+  
   //filteredData: searchFilterData(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  setData: (e) => dispatch(setData(e))
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
