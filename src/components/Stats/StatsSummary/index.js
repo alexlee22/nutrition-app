@@ -23,7 +23,7 @@ const styles = theme => ({
   },
 });
 
-function Summary(props) {
+function StatsSummary(props) {
   const { classes, goal, sum } = props;
   return(
     <div className={classes.container}>
@@ -39,11 +39,11 @@ function Summary(props) {
   )
 }
 
-Summary.propTypes = {
+StatsSummary.propTypes = {
   classes: PropTypes.object.isRequired,
   goal: PropTypes.number.isRequired,
   sum: PropTypes.number.isRequired,
 };
 
-export default withStyles(styles)(Summary);
+export default withStyles(styles)(StatsSummary);
 

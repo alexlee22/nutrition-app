@@ -27,7 +27,7 @@ function InspectFoodOverview(props) {
   return(
     <div className={classes.container}>
       <div className={classes.imageWrapper}>
-        <img className={classes.thumbnailIcon} src={data.photo.thumb} />
+        <img className={classes.thumbnailIcon} src={data.photo.thumb} alt="Food Thumbnail"/>
         <CloseIcon color="primary" onClick={() => setInspectFood({})} />
       </div>
       <Typography variant="h4" style={{textTransform: 'capitalize'}}>{data.food_name}</Typography>

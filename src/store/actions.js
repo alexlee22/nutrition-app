@@ -17,6 +17,13 @@ export const changeDate = (payload) => dispatch => {
   })
 }
 
+export const setSearchFocus = (payload) => dispatch => {
+  dispatch({
+    type: 'SEARCHBAR_FOCUS',
+    payload: payload
+  })
+}
+
 export const quickSearchFoods = (payload) => dispatch => {
   // When empty, set no search items
   if (payload === ''){

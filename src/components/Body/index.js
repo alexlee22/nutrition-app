@@ -14,6 +14,7 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       flexDirection: 'row',
       flexWrap: 'nowrap',
+      flexGrow: 1,
     }
   },
 });

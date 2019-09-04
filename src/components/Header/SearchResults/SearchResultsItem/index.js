@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   container: {
@@ -28,12 +27,9 @@ const styles = theme => ({
   listItemText: {
     "&:last-child": {
       padding: '0 10px 0 0',
-      textAlign: 'end',
+      textTransform: 'capitalize',
     },
   },
-  listItemText: {
-    textTransform: 'capitalize',
-  }
 });
 
 function SearchResultItem(props) {

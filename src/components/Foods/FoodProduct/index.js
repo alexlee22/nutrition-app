@@ -36,7 +36,7 @@ const styles = theme => ({
   }
 });
 
-function Navbutton(props) {
+function FoodProduct(props) {
   const { classes, data } = props;
   
   let calories = ((data.serving_size / data.serving_qty) * data.nf_calories);
@@ -68,12 +68,12 @@ function Navbutton(props) {
 
 
 
-Navbutton.propTypes = {
+FoodProduct.propTypes = {
   classes: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Navbutton);
+export default withStyles(styles)(FoodProduct);
 
 
 

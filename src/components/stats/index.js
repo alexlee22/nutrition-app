@@ -4,9 +4,9 @@ import styled from 'styled-components';
 //Components
 import User from '../User';
 import DateNavigation from '../DateNavigation';
-import Summary from './Summary';
-import LoadingBar from './LoadingBar';
-import Meals from './Meals';
+import StatsSummary from './StatsSummary';
+import StatsLoadingBar from './StatsLoadingBar';
+import StatsMeals from './StatsMeals';
 //Material-ui
 import Hidden from '@material-ui/core/Hidden';
 
@@ -15,18 +15,16 @@ import Hidden from '@material-ui/core/Hidden';
 const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
-  
-  margin: 20px;
+  padding: 20px;
   @media(min-width: 960px){
     max-width: 350px;
     width: 100%;
+    background-color: #f5f5f5;
+    flex-grow: 1;
   }
 `;
 
 class Stats extends Component {
-  constructor(props) {
-    super(props);
-  };
 
   render() {
     const { metaData, dateIndex } = this.props;
@@ -39,9 +37,9 @@ class Stats extends Component {
         <Hidden smDown>
           <User />
         </Hidden>
-        <Summary sum={totalCals} goal={metaData.daily_goal} />
-        <LoadingBar progress={(totalCals/metaData.daily_goal)*100} />
-        <Meals foodList={metaData.data_points[dateIndex].intake_list} />
+        <StatsSummary sum={totalCals} goal={metaData.daily_goal} />
+        <StatsLoadingBar progress={(totalCals/metaData.daily_goal)*100} />
+        <StatsMeals foodList={metaData.data_points[dateIndex].intake_list} />
       </DivContainer>
     )
   }

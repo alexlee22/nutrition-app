@@ -7,6 +7,8 @@ import NavButton from './NavButton';
 // Material-ui
 import Typography from '@material-ui/core/Typography';
 
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
 const DivContainer = styled.div`
   width: 100%;
   margin: 0 0 10px 0;
@@ -19,7 +21,6 @@ const DivContainer = styled.div`
     max-width: 450px;
     margin: 10px 0;
   }
-  
 `
 
 class DateNavigation extends Component {
@@ -29,6 +30,13 @@ class DateNavigation extends Component {
       //
     };
   };
+
+  // Construct string of day and month eg( 17 December)
+  constructDateString = (iDays) => {
+    let targetDate = new Date()
+    targetDate.setDate(targetDate.getDate() - iDays);
+    return (targetDate.getDate() + " " + months[targetDate.getMonth()])
+  }
 
   render() {
     const { metaData, dateIndex, changeDate } = this.props;
@@ -45,8 +53,7 @@ class DateNavigation extends Component {
         dateFormat = "Yesterday";
         break;
       default:
-        //CHANGE TO dd MMM
-        dateFormat = date.toLocaleDateString("en-US");
+        dateFormat = this.constructDateString(dateIndex);
     }
 
     return (

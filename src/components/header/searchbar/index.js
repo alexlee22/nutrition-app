@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { quickSearchFoods, setSearchFocus } from '../../../store/actions';
 import styled from 'styled-components';
+//Components
+import SearchButton from '../SearchButton';
 //Material-UI
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
@@ -36,6 +38,16 @@ class Searchbar extends Component {
     this.searchBarRef = React.createRef();
   };
 
+  focusSearchBar = () => {
+    this.searchBarRef.current.focus();
+  }
+  
+  defocusSearchBar = () => {
+    this.props.setSearchFocus(false);
+    this.props.quickSearchFoods('');
+    this.setState({typing:false, searchValue:''});
+  }
+
   handleSearchChange = (e) => {
     const self = this;
     if (self.state.typingTimeout) {
@@ -60,25 +72,32 @@ class Searchbar extends Component {
     }
 
     return(
-      <StyledDivContainer
-        style={cover ? {backgroundColor: 'rgba(0,0,0,0.25)'} : {}}
-      >
-        <StyledDivSearchBar>
-          <div style={{ margin: '0 5px 0 0'}}>
-            <SearchIcon color="secondary" style={{margin: '10px'}}  />
-          </div>
-          <InputBase
-            ref={this.searchBarRef}
-            disabled={dateIndex == 0 ? false : true}
-            placeholder="Search foods…"
-            inputProps={{ 'aria-label': 'search' }}
-            style={{ color: 'black', flexGrow: 1 }}
-            onChange={(e)=> this.handleSearchChange(e)}
-            onFocus={() => setSearchFocus(true)}
-            onBlur={() => setSearchFocus(false)}
-          />
-        </StyledDivSearchBar>
-      </StyledDivContainer>
+      <>
+        <StyledDivContainer
+          style={cover ? {backgroundColor: 'rgba(0,0,0,0.25)'} : {}}
+        >
+          <StyledDivSearchBar>
+            <div style={{ margin: '0 5px 0 0'}}>
+              <SearchIcon color="secondary" style={{margin: '10px'}}  />
+            </div>
+            <InputBase
+              inputRef={this.searchBarRef}
+              //disabled={dateIndex === 0 ? false : true}
+              placeholder="Search foods…"
+              inputProps={{ 'aria-label': 'search' }}
+              style={{ color: 'black', flexGrow: 1 }}
+              onChange={(e)=> this.handleSearchChange(e)}
+              onFocus={() => setSearchFocus(true)}
+              onBlur={() => setSearchFocus(false)}
+            />
+          </StyledDivSearchBar>
+        </StyledDivContainer>
+        <SearchButton
+          isFocused={cover}
+          focusFunction={this.focusSearchBar}
+          defocusFunction={this.defocusSearchBar}
+        />
+      </>
     )
   }
 }
@@ -92,6 +111,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setSearchFocus: (e) => dispatch(setSearchFocus(e)),
   quickSearchFoods: (e) => dispatch(quickSearchFoods(e))
+  
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);

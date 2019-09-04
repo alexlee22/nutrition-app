@@ -6,7 +6,6 @@ import UserAvatar from './UserAvatar';
 import UserBubble from './UserBubble';
 import UserName from './UserName';
 //Material-ui
-import Typography from '@material-ui/core/Typography';
 import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 
@@ -25,12 +24,6 @@ const StyledContainerDiv = styled.div`
 `
 
 class User extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      //
-    };
-  };
 
   render() {
     const { metaData } = this.props;
@@ -42,7 +35,7 @@ class User extends Component {
           <UserBubble label="kg" value={ metaData.weight_kg } />
           <UserBubble label="cm" value={ metaData.height_cm } />
         </StyledContainerDiv>
-        <Hidden sdDown>
+        <Hidden smDown>
           <Divider />
         </Hidden>
       </>

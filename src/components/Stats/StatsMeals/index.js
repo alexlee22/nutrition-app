@@ -29,7 +29,7 @@ function calcTotal(data, filter) {
   return filtered_list.reduce((total, d) => total + (d.serving_size / d.serving_qty) * d.nf_calories, 0);
 }
 
-function Meals(props) {
+function StatsMeals(props) {
   const { classes, foodList } = props;
   return(
     <div className={classes.container}>
@@ -43,12 +43,12 @@ function Meals(props) {
   )
 }
 
-Meals.propTypes = {
+StatsMeals.propTypes = {
   classes: PropTypes.object.isRequired,
   foodList: PropTypes.array.isRequired,
 };
 
-export default withStyles(styles)(Meals);
+export default withStyles(styles)(StatsMeals);
 
 
 

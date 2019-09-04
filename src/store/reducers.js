@@ -8,6 +8,7 @@ const initialQuickSearch = {
 const initialState = {
   metaData: MOCK_DATA,
   dateIndex: 0,
+  searchBarFocus: false,
   quickSearchData: initialQuickSearch,
   inspectFood: {}
 }
@@ -18,6 +19,8 @@ export default (state = initialState, action) => {
       return { ...state, metaData: action.payload };
     case 'CHANGE_DATE':
       return { ...state, dateIndex: action.payload };
+    case 'SEARCHBAR_FOCUS':
+        return { ...state, searchBarFocus: action.payload };
     case 'SET_QUICK_SEARCH_DATA':
       return { ...state, quickSearchData: action.payload };
     case 'SET_INSPECT_FOOD':

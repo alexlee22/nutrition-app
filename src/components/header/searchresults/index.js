@@ -6,21 +6,19 @@ import SearchResultsItem from './SearchResultsItem';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
 const styles = theme => ({
   container: {
-    width:'100vw',
-    height: '100vh',
+    width: '100vw',
+    height: 'calc(100vh - 70px)',
     position: 'absolute',
     top: '70px',
   },
   paper: {
     width: 'calc(100% - 20px)',
     maxWidth: '450px',
-    maxHeight: 'calc(100% - 70px - 10px)',
+    maxHeight: 'calc(100% - 10px)',
     margin: '0 auto',
     overflow: 'scroll',
   },
@@ -52,7 +50,7 @@ function SearchResults(props) {
   return(
     <div
       className={classes.container}
-      style={cover ? {backgroundColor: 'rgba(0,0,0,0.25)'} : {}}
+      style={cover ? {backgroundColor: 'rgba(0,0,0,0.25)'} : { display: 'none' }}
     >
       <Paper className={classes.paper} style={visible ? {} : { display: 'none' }}>
         <List className={classes.root} subheader={<li />}>

@@ -5,7 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 import grey from '@material-ui/core/colors/grey';
 import Typography from '@material-ui/core/Typography';
-import { isUserWhitespacable } from '@babel/types';
 
 const styles = theme => ({
   bubble: {

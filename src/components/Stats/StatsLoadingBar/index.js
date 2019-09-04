@@ -21,10 +21,8 @@ const styles = theme => ({
   
 });
 
-function LoadingBar(props) {
+function StatsLoadingBar(props) {
   const { classes, progress } = props;
-  console.log(progress.toFixed(0).toString() + "%")
-  console.log(progress.toFixed(0) + ((progress.toFixed(0) - 50) * 0.1))
   return(
     <div className={classes.container}>
       <LinearProgress className={classes.loadingBar} color="primary" variant="determinate" value={progress > 100 ? 100 : progress} />
@@ -38,12 +36,12 @@ function LoadingBar(props) {
   )
 }
 
-LoadingBar.propTypes = {
+StatsLoadingBar.propTypes = {
   classes: PropTypes.object.isRequired,
   progress: PropTypes.number.isRequired,
 };
 
-export default withStyles(styles)(LoadingBar);
+export default withStyles(styles)(StatsLoadingBar);
 
 
 
