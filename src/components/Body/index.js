@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //Components
-import Stats from '../stats';
+import Stats from '../Stats';
 import Foods from '../foods';
 //Material-UI
 import { withStyles } from '@material-ui/core/styles';
-
 
 const styles = theme => ({
   container: {
@@ -18,13 +17,6 @@ const styles = theme => ({
     }
   },
 });
-
-/*
-<Hidden mdUp>
-          <DateNavigation />
-        </Hidden>
-        <Hidden smDown>
-*/
 
 function Body(props) {
   const { classes } = props;

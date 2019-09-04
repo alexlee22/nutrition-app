@@ -17,6 +17,7 @@ const styles = theme => ({
     width: '75px',
     height: '75px',
     backgroundColor: deepPurple[700],
+    order: 3,
     [theme.breakpoints.up('md')]: {
       backgroundColor: grey[600],
       order: 1,
@@ -27,6 +28,7 @@ const styles = theme => ({
   },
   typography: {
     color: 'white',
+    lineHeight: '1em',
   }
 });
 
@@ -34,8 +36,8 @@ function UserBubble(props) {
   const { classes, label, value } = props;
   return(
     <div className={classes.bubble}>
-      <Typography className={classes.typography} variant="h5" component="h5">{value}</Typography>
-      <Typography className={classes.typography} variant="h6" component="h6">{label}</Typography>
+      <Typography className={classes.typography} variant="h5">{value}</Typography>
+      <Typography className={classes.typography} variant="subtitle1">{label}</Typography>
     </div>
   )
 }

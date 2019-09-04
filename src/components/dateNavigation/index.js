@@ -17,6 +17,7 @@ const DivContainer = styled.div`
   align-items: center;
   @media(min-width: 960px){
     max-width: 450px;
+    margin: 10px 0;
   }
   
 `
@@ -47,7 +48,6 @@ class DateNavigation extends Component {
         //CHANGE TO dd MMM
         dateFormat = date.toLocaleDateString("en-US");
     }
-    
 
     return (
       <DivContainer>

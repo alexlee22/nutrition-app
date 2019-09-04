@@ -8,7 +8,8 @@ const styles = theme => ({
   avatar: {
     width: '75px',
     height: '75px',
-    [theme.breakpoints.up('sm')]: {
+    order: 1,
+    [theme.breakpoints.up('md')]: {
       width: '125px',
       height: '125px',
       order: 2,

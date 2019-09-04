@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 //Components
 import User from '../User';
-import DateNavigation from '../dateNavigation';
-import Summary from './summary';
-import LoadingBar from './loadingbar';
-import Meals from './meals';
+import DateNavigation from '../DateNavigation';
+import Summary from './Summary';
+import LoadingBar from './LoadingBar';
+import Meals from './Meals';
 //Material-ui
 import Hidden from '@material-ui/core/Hidden';
 
