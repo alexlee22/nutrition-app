@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //Components
 import Stats from '../Stats';
-import Foods from '../foods';
+import Foods from '../Foods';
 //Material-UI
 import { withStyles } from '@material-ui/core/styles';
 

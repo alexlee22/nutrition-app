@@ -36,7 +36,7 @@ const styles = theme => ({
   }
 });
 
-function Searchresultitem(props) {
+function SearchResultItem(props) {
   const { classes, data, setInspectFood } = props;
   return(
     <ListItem className={classes.container} onClick={() => setInspectFood(data)}>
@@ -50,16 +50,10 @@ function Searchresultitem(props) {
   );
 }
 
-
-
-
-Searchresultitem.propTypes = {
+SearchResultItem.propTypes = {
   classes: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
   setInspectFood: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(Searchresultitem);
-
-
-
+export default withStyles(styles)(SearchResultItem);

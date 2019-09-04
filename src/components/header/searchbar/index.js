@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { quickSearchFoods } from '../../../store/actions';
-
-//Components
+import { quickSearchFoods, setSearchFocus } from '../../../store/actions';
+import styled from 'styled-components';
 //Material-UI
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 
 const timeoutDuration = 400;
+
+const StyledDivContainer = styled.div`
+  display: flex;
+  min-height: 70px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`
+const StyledDivSearchBar = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: 450px;
+  background-color: white;
+  border-radius: 5px;
+  align-items: center;
+  margin: 10px;
+`
 
 class Searchbar extends Component {
   constructor(props) {
@@ -17,6 +33,7 @@ class Searchbar extends Component {
       typing: false,
       typingTimeout: 0
     };
+    this.searchBarRef = React.createRef();
   };
 
   handleSearchChange = (e) => {
@@ -34,31 +51,46 @@ class Searchbar extends Component {
   }
 
   render() {
-    const { dateIndex } = this.props;
+    const { dateIndex, quickSearchData, searchBarFocus, setSearchFocus } = this.props;
+
+    //If grey cover needed
+    let cover = false;
+    if (searchBarFocus || quickSearchData.common.length > 0 || quickSearchData.branded.length > 0) {
+      cover = true;
+    }
+
     return(
-      <div style={{display: 'flex', width: '100%', maxWidth: '450px', backgroundColor: 'white', borderRadius: '5px', alignItems: 'center' }}>
-        <div style={{ margin: '0 5px 0 0'}}>
-          <SearchIcon color="secondary" style={{margin: '10px'}}  />
-        </div>
-        <InputBase
-          disabled={dateIndex == 0 ? false : true}
-          placeholder="Search foods…"
-          inputProps={{ 'aria-label': 'search' }}
-          style={{ 'flexGrow': 1 }}
-          onChange={(e)=> this.handleSearchChange(e)}
-        />
-      </div>
+      <StyledDivContainer
+        style={cover ? {backgroundColor: 'rgba(0,0,0,0.25)'} : {}}
+      >
+        <StyledDivSearchBar>
+          <div style={{ margin: '0 5px 0 0'}}>
+            <SearchIcon color="secondary" style={{margin: '10px'}}  />
+          </div>
+          <InputBase
+            ref={this.searchBarRef}
+            disabled={dateIndex == 0 ? false : true}
+            placeholder="Search foods…"
+            inputProps={{ 'aria-label': 'search' }}
+            style={{ color: 'black', flexGrow: 1 }}
+            onChange={(e)=> this.handleSearchChange(e)}
+            onFocus={() => setSearchFocus(true)}
+            onBlur={() => setSearchFocus(false)}
+          />
+        </StyledDivSearchBar>
+      </StyledDivContainer>
     )
   }
 }
 
-
 const mapStateToProps = state => ({
-  dateIndex: state.dateIndex
+  dateIndex: state.dateIndex,
+  quickSearchData: state.quickSearchData,
+  searchBarFocus: state.searchBarFocus,
 })
 
 const mapDispatchToProps = dispatch => ({
-//setToggleMenu: () => dispatch(setToggleMenu())
+  setSearchFocus: (e) => dispatch(setSearchFocus(e)),
   quickSearchFoods: (e) => dispatch(quickSearchFoods(e))
 })
 

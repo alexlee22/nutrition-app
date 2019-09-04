@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setData } from './store/actions';
 import styled from 'styled-components'; 
 //Components
-import Header from './components/header';
+import Header from './components/Header';
 import Body from './components/Body';
 //Material UI
 import { createMuiTheme } from '@material-ui/core/styles';
