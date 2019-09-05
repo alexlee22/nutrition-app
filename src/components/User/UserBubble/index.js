@@ -15,14 +15,20 @@ const styles = theme => ({
     alignItems: 'center',
     width: '75px',
     height: '75px',
+    margin: '10px 0',
     backgroundColor: deepPurple[700],
     order: 3,
     [theme.breakpoints.up('md')]: {
       backgroundColor: grey[600],
+      margin: '0',
       order: 1,
     },
     "&:last-child": {
+      margin: '10px',
       order: 3,
+      [theme.breakpoints.up('md')]: {
+        margin: '0',
+      },
     }
   },
   typography: {

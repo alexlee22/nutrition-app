@@ -1,8 +1,10 @@
-
+const nutritionAppID = "<NUTRITIONIX APPLICATION ID>";
+const nutritionAppKey = "<NUTRITIONIX APP KEY>";
 const nutritionInstantURL = "https://trackapi.nutritionix.com/v2/search/instant";
 const nutritionDetailGeneric = "https://trackapi.nutritionix.com/v2/natural/nutrients";
 const nutritionDetailBranded = "https://trackapi.nutritionix.com/v2/search/item";
 
+//Sets the metadata (old function)
 export const setData = (payload) => dispatch => {
   dispatch({
     type: 'SET_DATA',
@@ -10,6 +12,7 @@ export const setData = (payload) => dispatch => {
   })
 }
 
+//Swap dates using the DateNavigation component
 export const changeDate = (payload) => dispatch => {
   dispatch({
     type: 'CHANGE_DATE',
@@ -17,6 +20,7 @@ export const changeDate = (payload) => dispatch => {
   })
 }
 
+//Toggle action for focusing/unfocusing search bar
 export const setSearchFocus = (payload) => dispatch => {
   dispatch({
     type: 'SEARCHBAR_FOCUS',
@@ -24,8 +28,9 @@ export const setSearchFocus = (payload) => dispatch => {
   })
 }
 
+//Retrieve a quick list of data to populate the autofill, based on search string
 export const quickSearchFoods = (payload) => dispatch => {
-  // When empty, set no search items
+  //When empty, set no search items
   if (payload === ''){
     console.log('none')
     dispatch({
@@ -33,6 +38,7 @@ export const quickSearchFoods = (payload) => dispatch => {
       payload: { 'common': [], 'branded': [] }
     });
   }
+  //Fetch
   else {
     let configBody = { "query": payload };
     let configHeaders = {
@@ -57,9 +63,9 @@ export const quickSearchFoods = (payload) => dispatch => {
   }
 }
 
+//Get data from selected food using the nutrition data url
 export const setInspectFood = (payload) => dispatch => {
-  
-  
+
   let configHeaders = {
     'x-app-id': nutritionAppID,
     'x-app-key': nutritionAppKey,
@@ -101,7 +107,7 @@ export const setInspectFood = (payload) => dispatch => {
       });
     });
   }
-  //Clean
+  //Clean fields (for closing app)
   else {
     dispatch({
       type: 'SET_INSPECT_FOOD',
@@ -110,6 +116,7 @@ export const setInspectFood = (payload) => dispatch => {
   }
 }
 
+//Add food to list of Todays consumption
 export const appendFood = (food, servings, meal) => dispatch => {
   let compiledFood = {
     "food_name": food.food_name,

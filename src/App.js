@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 //Components
 import Header from './components/Header';
 import Body from './components/Body';
@@ -7,6 +8,13 @@ import Body from './components/Body';
 import { createMuiTheme } from '@material-ui/core/styles';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
+const StyledApp = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+  min-height: 100vh;
+`
 
 const theme = createMuiTheme({
   palette: {
@@ -24,18 +32,12 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App" style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'stretch',
-        height: '100%',
-        minHeight: '100vh',
-      }}>
+      <StyledApp >
         <MuiThemeProvider theme={theme}>
           <Header />
           <Body />
         </MuiThemeProvider>
-      </div>
+      </StyledApp>
     );
   }
 }

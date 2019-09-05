@@ -25,9 +25,9 @@ const styles = theme => ({
     borderBottom: '1px solid grey',
   },
   listItemText: {
+    textTransform: 'capitalize',
     "&:last-child": {
       padding: '0 10px 0 0',
-      textTransform: 'capitalize',
     },
   },
 });
