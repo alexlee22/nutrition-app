@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d9590b25b8f702b62008d818a2439c70",
+    "revision": "796df64421a5378ce35154836b67dfd2",
     "url": "/nutrition-app/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/nutrition-app/static/js/2.26e5fa3a.chunk.js"
   },
   {
-    "revision": "4b5c4cbb8390add51e1d",
-    "url": "/nutrition-app/static/js/main.41a5b3d0.chunk.js"
+    "revision": "5df952e7a480e4b074ee",
+    "url": "/nutrition-app/static/js/main.07b70541.chunk.js"
   },
   {
     "revision": "06d9bb8632241b196099",
