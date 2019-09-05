@@ -17,9 +17,9 @@ const styles = theme => ({
 });
 
 
-
 function NavButton(props) {
   const { classes, direction, index, noOfDays, eventOnClick } = props;
+  //Return "<" icon
   if (direction === "back"){
     return(
       <ArrowBackIosIcon

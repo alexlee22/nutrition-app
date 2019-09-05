@@ -35,7 +35,7 @@ const styles = theme => ({
 function SearchResultItem(props) {
   const { classes, data, setInspectFood } = props;
   return(
-    <ListItem className={classes.container} onClick={() => setInspectFood(data)}>
+    <ListItem button className={classes.container} onClick={() => setInspectFood(data)}>
       <img alt={"Image of " + data.food_name} className={classes.icon} src={data.photo.thumb} />
       <ListItemText
         className={classes.listItemText}

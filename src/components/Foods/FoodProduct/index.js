@@ -65,9 +65,6 @@ function FoodProduct(props) {
   );
 }
 
-
-
-
 FoodProduct.propTypes = {
   classes: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,

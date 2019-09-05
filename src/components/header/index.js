@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setInspectFood, setSearchFocus } from '../../store/actions';
+import { setInspectFood } from '../../store/actions';
 import styled from 'styled-components';
 //Components
 import DateNavigation from '../DateNavigation';
@@ -23,20 +23,10 @@ const StyledAppBar = styled(AppBar)`
 `
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  };
-
-  handleAction = () => {
-    console.log('handledActon')
-  }
 
   render() {
-    const { inspectFood, quickSearchData, searchBarFocus,
-       setSearchFocus, setInspectFood } = this.props;
-    
+    const { inspectFood, quickSearchData, searchBarFocus, setInspectFood } = this.props;
     let mountInspectFood = Object.keys(inspectFood).length <= 0 ? false : true;
-//<AppBar position='relative' style={{boxShadow:'none', display: 'flex', justifyContent: 'center', alignItems: 'center', padding:'10px', zIndex: 10}} >
     return (
       <>
         <StyledAppBar position='relative'>
@@ -69,10 +59,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  //setToggleMenu: () => dispatch(setToggleMenu())
-  setSearchFocus: (e) => dispatch(setSearchFocus(e)),
   setInspectFood: (e) => dispatch(setInspectFood(e))
-
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

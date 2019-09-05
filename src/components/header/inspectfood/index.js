@@ -7,15 +7,9 @@ import InspectFoodOverview from './InspectFoodOverview';
 import InspectFoodServings from './InspectFoodServings';
 import InspectFoodMeal from './InspectFoodMeal';
 //Material-UI
-import Hidden from '@material-ui/core/Hidden';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
-
-import InputLabel from '@material-ui/core/InputLabel';
-import InputBase from '@material-ui/core/InputBase';
-import { flexbox } from '@material-ui/system';
 
 const DivContainer = styled.div`
   position: absolute;
@@ -52,26 +46,51 @@ class InspectFood extends Component {
     super(props);
     this.state = {
       servings: "0",
-      meal: ""
+      meal: "",
+      servingError: false,
+      mealError: false
     };
   };
 
+  //Form setStates
   handleChangeServings = (e) => {
     this.setState({servings: e.target.value});
   }
-
   handleSelectMeal = (e) => {
     this.setState({meal: e.target.value});
   }
 
+  //Food validation: check before entering food in
   handleAddFood = () => {
     const { inspectFood, appendFood  } = this.props;
     const { servings, meal } = this.state;
     
-    appendFood(inspectFood, servings, meal);
+    //Check and regester errors
+    let errors = {
+      servingError: false,
+      mealError: false
+    };
+
+    if (+servings <= 0){
+      errors['servingError'] = true;
+    }
+    if (meal === ""){
+      errors['mealError'] = true;
+    } 
+    
+    //If errors cancel add food
+    if (errors['servingError'] || errors['mealError']){
+      this.setState(errors);
+    }
+    //No errors, add food
+    else {
+      appendFood(inspectFood, servings, meal);
+    }
   } 
 
+
   render() {
+    const { servingError, mealError } = this.state;
     const { inspectFood, setInspectFood } = this.props;
     
     //Check visibility
@@ -92,11 +111,13 @@ class InspectFood extends Component {
             data={inspectFood}
             servings={this.state.servings}
             setServings={this.handleChangeServings}
+            servingError={servingError}
           />
           <StyledDivider />
           <InspectFoodMeal
             meal={this.state.meal}
             setMeal={this.handleSelectMeal}
+            mealError={mealError}
           />
           <StyledButtonContainer>
             <Button
@@ -115,8 +136,6 @@ class InspectFood extends Component {
     
   }
 }
-
-
 
 
 const mapStateToProps = state => ({

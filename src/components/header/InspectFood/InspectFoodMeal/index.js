@@ -26,11 +26,14 @@ const styles = theme => ({
 });
 
 function InspectFoodMeal(props) {
-  const { classes, meal, setMeal } = props;
+  const { classes, meal, setMeal, mealError } = props;
   return(
     <div className={classes.container}>
       <Typography varient="overline" className={classes.menuTitle}>ADD TO TODAY</Typography>
-      <FormControl className={classes.form}>
+      <FormControl
+        className={classes.form}
+        error={mealError}
+      >
         <NativeSelect
           className={classes.input}
           value={meal}
@@ -51,6 +54,7 @@ InspectFoodMeal.propTypes = {
   classes: PropTypes.object.isRequired,
   meal: PropTypes.string.isRequired,
   setMeal: PropTypes.func.isRequired,
+  mealError: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(InspectFoodMeal);

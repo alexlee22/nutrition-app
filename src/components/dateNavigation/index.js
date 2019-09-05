@@ -24,13 +24,7 @@ const DivContainer = styled.div`
 `
 
 class DateNavigation extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      //
-    };
-  };
-
+  
   // Construct string of day and month eg( 17 December)
   constructDateString = (iDays) => {
     let targetDate = new Date()
@@ -66,7 +60,6 @@ class DateNavigation extends Component {
   }
 
 }
-
 
 const mapStateToProps = state => ({
     metaData: state.metaData,

@@ -28,7 +28,7 @@ const styles = theme => ({
 
 
 function InspectFoodServings(props) {
-  const { classes, data, servings,  setServings } = props;
+  const { classes, data, servings, setServings, servingError } = props;
   let calories, grams;
 
   if (Number(servings)){
@@ -53,6 +53,7 @@ function InspectFoodServings(props) {
         variant="filled"
         helperText={data.serving_unit}
         className={classes.textField}
+        error={servingError}
       />
       
         <div className={classes.statsContainer}>
@@ -77,6 +78,7 @@ InspectFoodServings.propTypes = {
   data: PropTypes.object.isRequired,
   servings: PropTypes.string.isRequired,
   setServings: PropTypes.func.isRequired,
+  servingError: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(InspectFoodServings);

@@ -38,16 +38,19 @@ class Searchbar extends Component {
     this.searchBarRef = React.createRef();
   };
 
+  //To focus search bar
   focusSearchBar = () => {
     this.searchBarRef.current.focus();
   }
   
+  //To defocus search bar
   defocusSearchBar = () => {
     this.props.setSearchFocus(false);
     this.props.quickSearchFoods('');
     this.setState({typing:false, searchValue:''});
   }
 
+  //Request to send search, searches when timeout or no new changes
   handleSearchChange = (e) => {
     const self = this;
     if (self.state.typingTimeout) {
@@ -63,7 +66,7 @@ class Searchbar extends Component {
   }
 
   render() {
-    const { dateIndex, quickSearchData, searchBarFocus, setSearchFocus } = this.props;
+    const { quickSearchData, searchBarFocus, setSearchFocus } = this.props;
 
     //If grey cover needed
     let cover = false;
@@ -82,7 +85,6 @@ class Searchbar extends Component {
             </div>
             <InputBase
               inputRef={this.searchBarRef}
-              //disabled={dateIndex === 0 ? false : true}
               placeholder="Search foods…"
               inputProps={{ 'aria-label': 'search' }}
               style={{ color: 'black', flexGrow: 1 }}
@@ -103,7 +105,6 @@ class Searchbar extends Component {
 }
 
 const mapStateToProps = state => ({
-  dateIndex: state.dateIndex,
   quickSearchData: state.quickSearchData,
   searchBarFocus: state.searchBarFocus,
 })
