@@ -44,7 +44,7 @@ You will also need a Nutritionix developer account, check the last section for m
 
 To install the required packages:
 
-1. Clone the git repo to your location of choice (or download the files directly from Github),
+1. Clone the git repo to your location of choice (or download the files directly from GitHub),
 2. Navigate to the folder in terminal,
 3. Run the command `npm install` in your terminal,
 4. Input your Nutritionix developer App and Key information,
@@ -62,7 +62,7 @@ This command will compile all the required files to run the site inside the fold
 
 `npm run deploy`
 
-Inside your `package.json` file on the line starting with `"homepage"`, replace `<USERNAME>` with your github username and `<GITHUB_REPO_NAME>` with the repo in which you want to host your site in.
+Inside your `package.json` file on the line starting with `"homepage"`, replace `<USERNAME>` with your GitHub username and `<GITHUB_REPO_NAME>` with the repo in which you want to host your site in.
 ```
 ...
 "homepage": "http://<USERNAME>.github.io/<GITHUB_REPO_NAME>",
@@ -89,7 +89,7 @@ App
 
 ### Store
 
-The application uses Redux to manage the applications data. Redux was choses as the state manager to help manage the data between components without having to constantly send props into each components. Future developments will look into React Hooks. The store data consist of the following:
+The application uses Redux to manage the applications data. Redux was chosen as the state manager to help manage the data between components without having to constantly send props into each components. Future developments will look into React Hooks. The store data consist of the following:
 ```
 {
   metaData: Object,     //Contains
@@ -100,7 +100,12 @@ The application uses Redux to manage the applications data. Redux was choses as 
 }
 ```
 
-To automatically deploy your site to Github pages, run `npm run deploy`.
+To automatically deploy your site to GitHub pages, run `npm run deploy`.
+
+## Bugs
+
+- Redux update state (action `setInspectFood`) removes `styled-components` styling from component:
+  - Only happens in production mode, not deployment.
 
 ## Credits
 

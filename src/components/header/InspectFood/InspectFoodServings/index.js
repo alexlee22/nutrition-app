@@ -38,7 +38,6 @@ function InspectFoodServings(props) {
       grams = data.serving_weight_grams * servings;
     }
   }
-  console.log(calories, grams)
 
   return(
     <div className={classes.container}>
@@ -60,15 +59,10 @@ function InspectFoodServings(props) {
           <Typography variant="h4">{grams ? grams.toFixed(0) : '-'}</Typography>
           <Typography variant="subtitle1" style={{color: 'grey'}}>grams</Typography>
         </div>
-      
-      
         <div className={classes.statsContainer}>
           <Typography variant="h4">{calories ? calories.toFixed(0) : '-'}</Typography>
           <Typography variant="subtitle1" style={{color: 'grey'}}>calories</Typography>
         </div>
-      
-      
-      
     </div>
   );
 }
