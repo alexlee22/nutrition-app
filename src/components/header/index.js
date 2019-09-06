@@ -40,9 +40,7 @@ class Header extends Component {
           </Hidden>
         
           <SearchResults data={quickSearchData} searchBarFocus={searchBarFocus} setInspectFood={setInspectFood}  />
-          { mountInspectFood &&
-            <InspectFood />
-          }
+          <InspectFood />
         </StyledAppBar>
       </>
     )

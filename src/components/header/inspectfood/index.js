@@ -38,7 +38,7 @@ const StyledDivider = styled(Divider)`
 const StyledButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding: '10px;
+  padding: 10px;
 `
 
 class InspectFood extends Component {
@@ -99,8 +99,11 @@ class InspectFood extends Component {
       return (<></>)
     }
 
+    
+    let mountInspectFood = Object.keys(inspectFood).length <= 0 ? false : true;
+    
     return (
-      <DivContainer style={visible ? {} : { display: 'none' } }>
+      <DivContainer style={mountInspectFood ? {} : { display: 'none' } }>
         <StyledPaper>
           <InspectFoodOverview
             data={inspectFood}
