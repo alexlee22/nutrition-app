@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/nutrition-app/static/js/main.c68c1ab0.chunk.js",
-    "main.js.map": "/nutrition-app/static/js/main.c68c1ab0.chunk.js.map",
+    "main.js": "/nutrition-app/static/js/main.0dc77c2a.chunk.js",
+    "main.js.map": "/nutrition-app/static/js/main.0dc77c2a.chunk.js.map",
     "runtime~main.js": "/nutrition-app/static/js/runtime~main.7a66ffc0.js",
     "runtime~main.js.map": "/nutrition-app/static/js/runtime~main.7a66ffc0.js.map",
-    "static/js/2.26e5fa3a.chunk.js": "/nutrition-app/static/js/2.26e5fa3a.chunk.js",
-    "static/js/2.26e5fa3a.chunk.js.map": "/nutrition-app/static/js/2.26e5fa3a.chunk.js.map",
+    "static/js/2.44a4ca4e.chunk.js": "/nutrition-app/static/js/2.44a4ca4e.chunk.js",
+    "static/js/2.44a4ca4e.chunk.js.map": "/nutrition-app/static/js/2.44a4ca4e.chunk.js.map",
     "index.html": "/nutrition-app/index.html",
-    "precache-manifest.3c6b90eb0fc39890ed91a4034a3842ad.js": "/nutrition-app/precache-manifest.3c6b90eb0fc39890ed91a4034a3842ad.js",
+    "precache-manifest.92fee2d2a2074fe5958bb3d57114f977.js": "/nutrition-app/precache-manifest.92fee2d2a2074fe5958bb3d57114f977.js",
     "service-worker.js": "/nutrition-app/service-worker.js"
   }
 }
