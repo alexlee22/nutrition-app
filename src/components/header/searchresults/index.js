@@ -15,6 +15,11 @@ const styles = theme => ({
     position: 'absolute',
     top: '70px',
   },
+  background: {
+    width: '100vw',
+    height: 'calc(100vh - 70px)',
+    position: 'absolute',
+  },
   paper: {
     width: 'calc(100% - 20px)',
     maxWidth: '450px',
@@ -34,7 +39,7 @@ const styles = theme => ({
 });
 
 function SearchResults(props) {
-  const { classes, data, searchBarFocus, setInspectFood } = props;
+  const { classes, data, searchBarFocus, setInspectFood, setSearchDefocus } = props;
   
   // Check if show item lists
   let visible = false;
@@ -50,8 +55,13 @@ function SearchResults(props) {
   return(
     <div
       className={classes.container}
-      style={cover ? {backgroundColor: 'rgba(0,0,0,0.25)'} : { display: 'none' }}
+      style={cover ? {} : { display: 'none' }}
     >
+      <div
+        className={classes.background}
+        style={cover ? {backgroundColor: 'rgba(0,0,0,0.25)'} : { display: 'none' }} 
+        onClick={() => { if(cover === true){ setSearchDefocus()} }}
+      />
       <Paper className={classes.paper} style={visible ? {} : { display: 'none' }}>
         <List className={classes.root} subheader={<li />}>
           {['common', 'branded'].map(key => (
@@ -66,16 +76,19 @@ function SearchResults(props) {
           ))}
         </List>
       </Paper>
+      
     </div>
     
   )
 }
 
+
 SearchResults.propTypes = {
   classes: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
   searchBarFocus: PropTypes.bool.isRequired,
-  setInspectFood: PropTypes.func.isRequired
+  setInspectFood: PropTypes.func.isRequired,
+  setSearchDefocus: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(SearchResults);

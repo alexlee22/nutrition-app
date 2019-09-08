@@ -45,7 +45,7 @@ class InspectFood extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      servings: "0",
+      servings: "1",
       meal: "",
       servingError: false,
       mealError: false
@@ -85,13 +85,14 @@ class InspectFood extends Component {
     //No errors, add food
     else {
       appendFood(inspectFood, servings, meal);
+      this.setState({servings: "1", meal: "", ...errors});
     }
   } 
 
 
   render() {
     const { servingError, mealError } = this.state;
-    const { inspectFood, setInspectFood } = this.props;
+    const { mountInspectFood, inspectFood, setInspectFood } = this.props;
     
     //Check visibility
     let visible = true;
@@ -99,9 +100,6 @@ class InspectFood extends Component {
       return (<></>)
     }
 
-    
-    let mountInspectFood = Object.keys(inspectFood).length <= 0 ? false : true;
-    
     return (
       <DivContainer style={mountInspectFood ? {} : { display: 'none' } }>
         <StyledPaper>

@@ -43,7 +43,7 @@ function InspectFoodServings(props) {
     <div className={classes.container}>
       <TextField
         id="filled-number"
-        label="Number"
+        label="Servings"
         value={servings}
         onChange={(e) => setServings(e)}
         type="number"
@@ -56,11 +56,11 @@ function InspectFoodServings(props) {
       />
       
         <div className={classes.statsContainer}>
-          <Typography variant="h4">{grams ? grams.toFixed(0) : '-'}</Typography>
+          <Typography variant="h4">{grams ? grams.toFixed(0) : '0'}</Typography>
           <Typography variant="subtitle1" style={{color: 'grey'}}>grams</Typography>
         </div>
         <div className={classes.statsContainer}>
-          <Typography variant="h4">{calories ? calories.toFixed(0) : '-'}</Typography>
+          <Typography variant="h4">{calories ? calories.toFixed(0) : '0'}</Typography>
           <Typography variant="subtitle1" style={{color: 'grey'}}>calories</Typography>
         </div>
     </div>

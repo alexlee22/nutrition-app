@@ -28,11 +28,19 @@ export const setSearchFocus = (payload) => dispatch => {
   })
 }
 
+//Reset parameters when search cancel
+export const setSearchDefocus = (payload) => dispatch => {
+  console.log('actions')
+  dispatch({
+    type:'SEARCHBAR_DEFOCUS',
+    payload: payload
+  })
+}
+
 //Retrieve a quick list of data to populate the autofill, based on search string
 export const quickSearchFoods = (payload) => dispatch => {
   //When empty, set no search items
   if (payload === ''){
-    console.log('none')
     dispatch({
       type: 'SET_QUICK_SEARCH_DATA',
       payload: { 'common': [], 'branded': [] }
@@ -82,7 +90,6 @@ export const setInspectFood = (payload) => dispatch => {
       return res.json();
     })
     .then((myJSON) => {
-      console.log(myJSON)
       dispatch({
         type: 'SET_INSPECT_FOOD',
         payload: myJSON.foods[0]

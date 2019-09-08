@@ -11,7 +11,7 @@ const styles = theme => ({
     bottom: 0,
     right: 0,
     margin: '20px',
-    zIndex: 10,
+    zIndex: 0,
   },
   extendedIcon: {
     margin: '10px',

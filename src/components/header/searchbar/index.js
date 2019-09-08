@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { quickSearchFoods, setSearchFocus } from '../../../store/actions';
+import { quickSearchFoods, setSearchFocus, setSearchDefocus } from '../../../store/actions';
 import styled from 'styled-components';
 //Components
 import SearchButton from '../SearchButton';
@@ -17,6 +17,7 @@ const StyledDivContainer = styled.div`
   justify-content: center;
   align-items: center;
 `
+
 const StyledDivSearchBar = styled.div`
   display: flex;
   width: 100%;
@@ -66,18 +67,19 @@ class Searchbar extends Component {
   }
 
   render() {
-    const { quickSearchData, searchBarFocus, setSearchFocus } = this.props;
+    const { quickSearchData, searchBarFocus, setSearchFocus, setSearchDefocus } = this.props;
 
     //If grey cover needed
     let cover = false;
     if (searchBarFocus || quickSearchData.common.length > 0 || quickSearchData.branded.length > 0) {
       cover = true;
     }
-
+    console.log(cover)
     return(
       <>
         <StyledDivContainer
           style={cover ? {backgroundColor: 'rgba(0,0,0,0.25)'} : {}}
+          onClick={() => {if (cover === true) { setSearchDefocus() }}}
         >
           <StyledDivSearchBar>
             <div style={{ margin: '0 5px 0 0'}}>
@@ -97,7 +99,7 @@ class Searchbar extends Component {
         <SearchButton
           isFocused={cover}
           focusFunction={this.focusSearchBar}
-          defocusFunction={this.defocusSearchBar}
+          defocusFunction={setSearchDefocus}
         />
       </>
     )
@@ -111,8 +113,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setSearchFocus: (e) => dispatch(setSearchFocus(e)),
-  quickSearchFoods: (e) => dispatch(quickSearchFoods(e))
-  
+  quickSearchFoods: (e) => dispatch(quickSearchFoods(e)),
+  setSearchDefocus: () => dispatch(setSearchDefocus())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);

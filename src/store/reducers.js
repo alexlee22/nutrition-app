@@ -21,6 +21,8 @@ export default (state = initialState, action) => {
       return { ...state, dateIndex: action.payload };
     case 'SEARCHBAR_FOCUS':
         return { ...state, searchBarFocus: action.payload };
+    case 'SEARCHBAR_DEFOCUS':
+      return { ...state, quickSearchData: initialQuickSearch, inspectFood: {} };
     case 'SET_QUICK_SEARCH_DATA':
       return { ...state, quickSearchData: action.payload };
     case 'SET_INSPECT_FOOD':
@@ -28,6 +30,8 @@ export default (state = initialState, action) => {
     case 'ADD_FOOD':
       return { 
         ...state,
+        searchBarFocus: false,
+        quickSearchData: initialQuickSearch,
         inspectFood: {},
         metaData: {
           ...state.metaData,
