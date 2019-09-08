@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //Material-UI
 import { withStyles } from '@material-ui/core/styles';
-import deepPurple from '@material-ui/core/colors/deepPurple';
 import grey from '@material-ui/core/colors/grey';
 import Typography from '@material-ui/core/Typography';
 
@@ -16,7 +15,7 @@ const styles = theme => ({
     width: '75px',
     height: '75px',
     margin: '10px 0',
-    backgroundColor: deepPurple[700],
+    backgroundColor: '#300076',
     order: 3,
     [theme.breakpoints.up('md')]: {
       backgroundColor: grey[600],
@@ -42,7 +41,7 @@ function UserBubble(props) {
   return(
     <div className={classes.bubble}>
       <Typography className={classes.typography} variant="h5">{value}</Typography>
-      <Typography className={classes.typography} variant="subtitle1">{label}</Typography>
+      <Typography className={classes.typography} variant="body2">{label}</Typography>
     </div>
   )
 }

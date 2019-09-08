@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { setInspectFood, appendFood } from '../../../store/actions';
+import { setInspectFood, appendFood, setInspectFocus } from '../../../store/actions';
 //Components
 import InspectFoodOverview from './InspectFoodOverview';
 import InspectFoodServings from './InspectFoodServings';
@@ -10,6 +10,7 @@ import InspectFoodMeal from './InspectFoodMeal';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const DivContainer = styled.div`
   position: absolute;
@@ -21,8 +22,17 @@ const DivContainer = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: 15;
-  background-color: rgba(0,0,0,0.25);
 `;
+
+const BackgroundContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-color: rgba(0,0,0,0.25);
+`
 
 const StyledPaper = styled(Paper)`
   width: calc(100% - 20px);
@@ -30,6 +40,14 @@ const StyledPaper = styled(Paper)`
   margin: 10px;
   padding: 20px;
 `;
+
+const StyledDivLoader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+`
 
 const StyledDivider = styled(Divider)`
   margin: 5px 10px;
@@ -89,65 +107,76 @@ class InspectFood extends Component {
     }
   } 
 
+  handelCancelInspect = () => {
+    this.props.setInspectFood({});
+    this.props.setInspectFocus(false);
+  }
 
   render() {
     const { servingError, mealError } = this.state;
-    const { mountInspectFood, inspectFood, setInspectFood } = this.props;
+    const { inspectFoodFocus, inspectFood } = this.props;
     
-    //Check visibility
-    let visible = true;
-    if (Object.keys(inspectFood).length <= 0){
-      return (<></>)
-    }
+    //Check finnished fetching
+    let isMountFood = Object.keys(inspectFood).length <= 0 ? false : true;
 
     return (
-      <DivContainer style={mountInspectFood ? {} : { display: 'none' } }>
+      <DivContainer style={inspectFoodFocus ? {} : { display: 'none' } }>
+        <BackgroundContainer
+          style={inspectFoodFocus? {} : { display: 'none' }}
+          onClick={() => { this.handelCancelInspect() }}
+        />
         <StyledPaper>
-          <InspectFoodOverview
-            data={inspectFood}
-            setInspectFood={setInspectFood}
-          />
-          <StyledDivider />
-          <InspectFoodServings
-            data={inspectFood}
-            servings={this.state.servings}
-            setServings={this.handleChangeServings}
-            servingError={servingError}
-          />
-          <StyledDivider />
-          <InspectFoodMeal
-            meal={this.state.meal}
-            setMeal={this.handleSelectMeal}
-            mealError={mealError}
-          />
-          <StyledButtonContainer>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => this.handleAddFood()}
-            >
-              ADD
-            </Button>
-          </StyledButtonContainer>
-          
+          { isMountFood 
+            ?
+              <>
+                <InspectFoodOverview
+                  data={inspectFood}
+                  handelCloseWindow={this.handelCancelInspect}
+                />
+                <StyledDivider />
+                <InspectFoodServings
+                  data={inspectFood}
+                  servings={this.state.servings}
+                  setServings={this.handleChangeServings}
+                  servingError={servingError}
+                />
+                <StyledDivider />
+                <InspectFoodMeal
+                  meal={this.state.meal}
+                  setMeal={this.handleSelectMeal}
+                  mealError={mealError}
+                />
+                <StyledButtonContainer>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => this.handleAddFood()}
+                  > ADD </Button>
+                </StyledButtonContainer>
+              </>
+            :
+              <StyledDivLoader >
+                <CircularProgress style={{ width: '75px', height: '75px', margin: '50px 25px'}} color="primary" />
+              </StyledDivLoader>
+          }
         </StyledPaper>
         
       </DivContainer>
     )
-    
   }
 }
-
 
 const mapStateToProps = state => ({
     metaData: state.metaData,
     quickSearchData: state.quickSearchData,
+    inspectFoodFocus: state.inspectFoodFocus,
     inspectFood: state.inspectFood,
 })
 
 const mapDispatchToProps = dispatch => ({
   setInspectFood: (e) => dispatch(setInspectFood(e)),
   appendFood: (food, servings, meal) => dispatch(appendFood(food, servings, meal)),
+  setInspectFocus: (e) => dispatch(setInspectFocus(e))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(InspectFood);

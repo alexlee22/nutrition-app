@@ -4,6 +4,12 @@ const nutritionInstantURL = "https://trackapi.nutritionix.com/v2/search/instant"
 const nutritionDetailGeneric = "https://trackapi.nutritionix.com/v2/natural/nutrients";
 const nutritionDetailBranded = "https://trackapi.nutritionix.com/v2/search/item";
 
+
+function errorHandeling(resJSON){
+  console.log("ERROR: Nutritionix");
+  console.log(resJSON.message);
+}
+
 //Sets the metadata (old function)
 export const setData = (payload) => dispatch => {
   dispatch({
@@ -30,7 +36,6 @@ export const setSearchFocus = (payload) => dispatch => {
 
 //Reset parameters when search cancel
 export const setSearchDefocus = (payload) => dispatch => {
-  console.log('actions')
   dispatch({
     type:'SEARCHBAR_DEFOCUS',
     payload: payload
@@ -63,12 +68,26 @@ export const quickSearchFoods = (payload) => dispatch => {
       return res.json();
     })
     .then((myJSON) => {
-      dispatch({
-        type: 'SET_QUICK_SEARCH_DATA',
-        payload: myJSON
-      });
+      if (myJSON.hasOwnProperty('message')){
+        errorHandeling(myJSON);
+      }
+      else {
+        dispatch({
+          type: 'SET_QUICK_SEARCH_DATA',
+          payload: myJSON
+        });
+      }
+    }).catch((e) => {
+      console.log("ERROR: occured when fetching.");
     });
   }
+}
+
+export const setInspectFocus = (payload) => dispatch => {
+  dispatch({
+    type: 'SET_INSPECT_FOCUS',
+    payload: payload
+  });
 }
 
 //Get data from selected food using the nutrition data url
@@ -90,10 +109,17 @@ export const setInspectFood = (payload) => dispatch => {
       return res.json();
     })
     .then((myJSON) => {
-      dispatch({
-        type: 'SET_INSPECT_FOOD',
-        payload: myJSON.foods[0]
-      });
+      if (myJSON.hasOwnProperty('message')){
+        errorHandeling(myJSON);
+      }
+      else {
+        dispatch({
+          type: 'SET_INSPECT_FOOD',
+          payload: myJSON.foods[0]
+        });
+      }
+    }).catch((e) => {
+      console.log("ERROR: occured when fetching.");
     });
   }
   //Non-Branded
@@ -108,10 +134,15 @@ export const setInspectFood = (payload) => dispatch => {
       return res.json();
     })
     .then((myJSON) => {
-      dispatch({
-        type: 'SET_INSPECT_FOOD',
-        payload: myJSON.foods[0]
-      });
+      if (myJSON.hasOwnProperty('message')){
+        errorHandeling(myJSON);
+      }
+      else {
+        dispatch({
+          type: 'SET_INSPECT_FOOD',
+          payload: myJSON.foods[0]
+        });
+      }
     });
   }
   //Clean fields (for closing app)

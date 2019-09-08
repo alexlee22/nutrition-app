@@ -23,12 +23,12 @@ const styles = theme => ({
 
 
 function InspectFoodOverview(props) {
-  const { classes, data, setInspectFood } = props;
+  const { classes, data, handelCloseWindow } = props;
   return(
     <div className={classes.container}>
       <div className={classes.imageWrapper}>
         <img className={classes.thumbnailIcon} src={data.photo.thumb} alt="Food Thumbnail"/>
-        <CloseIcon color="primary" onClick={() => setInspectFood({})} />
+        <CloseIcon color="primary" onClick={() => handelCloseWindow()} />
       </div>
       <Typography variant="h4" style={{textTransform: 'capitalize'}}>{data.food_name}</Typography>
       <Typography variant="subtitle1" style={{color: 'grey'}}>{data.brand_name}</Typography>
@@ -39,7 +39,7 @@ function InspectFoodOverview(props) {
 InspectFoodOverview.propTypes = {
   classes: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
-  setInspectFood: PropTypes.func.isRequired,
+  handelCloseWindow: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(InspectFoodOverview);

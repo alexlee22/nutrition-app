@@ -102,11 +102,6 @@ The application uses Redux to manage the applications data. Redux was chosen as 
 
 To automatically deploy your site to GitHub pages, run `npm run deploy`.
 
-## Bugs
-
-- Redux update state (action `setInspectFood`) removes `styled-components` styling from component:
-  - Only happens in production mode, not deployment.
-
 ## Credits
 
 - Favicons from [favicon.io](https://favicon.io/emoji-favicons/),

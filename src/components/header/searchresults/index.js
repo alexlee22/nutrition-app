@@ -25,9 +25,10 @@ const styles = theme => ({
     maxWidth: '450px',
     maxHeight: 'calc(100% - 10px)',
     margin: '0 auto',
-    overflow: 'scroll',
+    overflowY: 'scroll',
   },
-  listSection: {
+  root: {
+    paddingBottom: 0,
   },
   ul: {
     padding: 0,

@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import NavButton from './NavButton';
 // Material-ui
 import Typography from '@material-ui/core/Typography';
+import Hidden from '@material-ui/core/Hidden';
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -53,7 +54,14 @@ class DateNavigation extends Component {
     return (
       <DivContainer>
         <NavButton direction="back" index={dateIndex} noOfDays={metaData.data_points.length} eventOnClick={changeDate} />
-        <Typography variant="h4" component="h4">{ dateFormat }</Typography>
+        
+        <Hidden mdUp>
+          <Typography variant="h5" component="h5">{ dateFormat }</Typography>
+        </Hidden>
+        <Hidden smDown>
+          <Typography variant="h4" component="h4">{ dateFormat }</Typography>
+        </Hidden>
+
         <NavButton direction="forwards" index={dateIndex} noOfDays={metaData.data_points.length} eventOnClick={changeDate} />
       </DivContainer>
     )
@@ -71,3 +79,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DateNavigation);
+

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
-//NEED TO CAPITALISE
 const MEAL_CATEGORY = ['breakfast', 'lunch', 'dinner', 'snack']
 
 const styles = theme => ({
@@ -35,14 +34,14 @@ function StatsMeals(props) {
     <div className={classes.container}>
       { MEAL_CATEGORY.map((cate, idx) => 
         <div key={idx} className={classes.cells}> 
-          <Typography variant="h4" component="h4">{ calcTotal(foodList, cate).toFixed(0) }</Typography>
-          <Typography className={classes.mealCategory} variant="subtitle1">{ cate }</Typography>
+          <Typography variant="h5" component="h5">{ calcTotal(foodList, cate).toFixed(0) }</Typography>
+          <Typography variant="body2" component="p" className={classes.mealCategory} >{ cate }</Typography>
         </div>
       )}
     </div>
   )
 }
-
+        
 StatsMeals.propTypes = {
   classes: PropTypes.object.isRequired,
   foodList: PropTypes.array.isRequired,

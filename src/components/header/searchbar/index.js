@@ -74,7 +74,7 @@ class Searchbar extends Component {
     if (searchBarFocus || quickSearchData.common.length > 0 || quickSearchData.branded.length > 0) {
       cover = true;
     }
-    console.log(cover)
+    
     return(
       <>
         <StyledDivContainer

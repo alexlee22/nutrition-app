@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setInspectFood, setSearchDefocus } from '../../store/actions';
+import { setInspectFood, setSearchDefocus, setInspectFocus } from '../../store/actions';
 import styled from 'styled-components';
 //Components
 import DateNavigation from '../DateNavigation';
@@ -24,9 +24,14 @@ const StyledAppBar = styled(AppBar)`
 
 class Header extends Component {
 
+  handelSubmitItems = (data) => {
+    Promise.resolve(this.props.setInspectFocus(true))
+      .then(() => {this.props.setInspectFood(data);});
+  }
+
   render() {
-    const { inspectFood, quickSearchData, searchBarFocus, setInspectFood, setSearchDefocus } = this.props;
-    let mountInspectFood = Object.keys(inspectFood).length <= 0 ? false : true;
+    const { quickSearchData, searchBarFocus, setSearchDefocus } = this.props;
+    
     return (
       <>
         <StyledAppBar position='relative'>
@@ -39,8 +44,8 @@ class Header extends Component {
             <DateNavigation />
           </Hidden>
         
-          <SearchResults data={quickSearchData} searchBarFocus={searchBarFocus} setInspectFood={setInspectFood} setSearchDefocus={setSearchDefocus}  />
-          <InspectFood mountInspectFood={mountInspectFood} />
+          <SearchResults data={quickSearchData} searchBarFocus={searchBarFocus} setInspectFood={this.handelSubmitItems} setSearchDefocus={setSearchDefocus}  />
+          <InspectFood />
         </StyledAppBar>
       </>
     )
@@ -51,14 +56,14 @@ class Header extends Component {
 
 
 const mapStateToProps = state => ({
-  inspectFood: state.inspectFood,
   quickSearchData: state.quickSearchData,
   searchBarFocus: state.searchBarFocus,
 })
 
 const mapDispatchToProps = dispatch => ({
   setInspectFood: (e) => dispatch(setInspectFood(e)),
-  setSearchDefocus: () => dispatch(setSearchDefocus())
+  setSearchDefocus: () => dispatch(setSearchDefocus()),
+  setInspectFocus: (e) => dispatch(setInspectFocus(e))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

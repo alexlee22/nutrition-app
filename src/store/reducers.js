@@ -9,6 +9,7 @@ const initialState = {
   metaData: MOCK_DATA,
   dateIndex: 0,
   searchBarFocus: false,
+  inspectFoodFocus: false,
   quickSearchData: initialQuickSearch,
   inspectFood: {}
 }
@@ -25,6 +26,8 @@ export default (state = initialState, action) => {
       return { ...state, quickSearchData: initialQuickSearch, inspectFood: {} };
     case 'SET_QUICK_SEARCH_DATA':
       return { ...state, quickSearchData: action.payload };
+    case 'SET_INSPECT_FOCUS':
+      return { ...state, inspectFoodFocus: action.payload };
     case 'SET_INSPECT_FOOD':
       return { ...state, inspectFood: action.payload };
     case 'ADD_FOOD':
@@ -32,6 +35,7 @@ export default (state = initialState, action) => {
         ...state,
         searchBarFocus: false,
         quickSearchData: initialQuickSearch,
+        inspectFoodFocus: false,
         inspectFood: {},
         metaData: {
           ...state.metaData,

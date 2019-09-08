@@ -29,7 +29,7 @@ function UserName(props) {
         </Typography>
       </Hidden>
       <Hidden smDown>
-        <Typography variant="h4" component="h4">
+        <Typography variant="h5" component="h5">
           { first_name } { last_name }
         </Typography>
       </Hidden>

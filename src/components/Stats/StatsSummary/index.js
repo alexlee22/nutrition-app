@@ -28,12 +28,12 @@ function StatsSummary(props) {
   return(
     <div className={classes.container}>
       <div className={classes.cells}>
-        <Typography variant="h4" component="h4">{ sum.toFixed(0) } cal</Typography>
-        <Typography variant="subtitle1" component="p">consumed</Typography>
+        <Typography variant="h5" component="h5">{ sum.toFixed(0) } cal</Typography>
+        <Typography variant="body2" component="p" style={{ color: 'grey'}}>consumed</Typography>
       </div>
       <div className={classes.cells}>
-        <Typography variant="h4" component="h4">{ goal } cal</Typography>
-        <Typography variant="subtitle1" component="p">daily goal</Typography>
+        <Typography variant="h5" component="h5">{ goal } cal</Typography>
+        <Typography variant="body2" component="p" style={{ color: 'grey'}}>daily goal</Typography>
       </div>
     </div>
   )
